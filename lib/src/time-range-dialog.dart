@@ -122,6 +122,9 @@ showTimeRangePicker({
 
   /// barrierDismissible false = user must tap button!
   bool barrierDismissible = true,
+
+  /// Box decoration for from to labels container
+  BoxDecoration? fromToBoxDecoration,
 }) async {
   assert(debugCheckHasMaterialLocalizations(context));
 
@@ -202,6 +205,8 @@ class TimeRangePicker extends StatefulWidget {
   final Color? disabledColor;
   final PaintingStyle paintingStyle;
 
+  final BoxDecoration? fromToBoxDecoration;
+
   final Widget? backgroundWidget;
   final int ticks;
 
@@ -269,6 +274,7 @@ class TimeRangePicker extends StatefulWidget {
     this.use24HourFormat = true,
     this.hideTimes = false,
     this.hideButtons = false,
+    this.fromToBoxDecoration,
   })  : ticksLength = ticksLength == null ? strokeWidth : 12,
         assert(interval.inSeconds <= minDuration.inSeconds,
             "interval must be smaller or same as min duration - adjust either one"),
@@ -757,7 +763,8 @@ class TimeRangePickerState extends State<TimeRangePicker>
     }
 
     return Container(
-      color: backgroundColor,
+      color: widget.fromToBoxDecoration == null ? backgroundColor : null,
+      decoration: widget.fromToBoxDecoration,
       padding: EdgeInsets.all(24),
       child: Flex(
         direction: landscape ? Axis.vertical : Axis.horizontal,
