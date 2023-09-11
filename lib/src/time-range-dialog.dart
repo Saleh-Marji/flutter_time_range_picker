@@ -168,6 +168,7 @@ showTimeRangePicker({
         maxDuration: maxDuration,
         minDuration: minDuration,
         fromToBoxDecoration: fromToBoxDecoration,
+
       ));
 
   return await showDialog<TimeRange>(
@@ -696,7 +697,7 @@ class TimeRangePickerState extends State<TimeRangePicker>
         child: AspectRatio(
           aspectRatio: 1,
           child: Container(
-            color: Colors.white.withOpacity(0),
+            color: widget.backgroundColor ??  Colors.white.withOpacity(0),
             child: Center(
               child: CustomPaint(
                 key: _circleKey,
