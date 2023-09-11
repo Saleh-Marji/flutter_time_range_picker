@@ -167,6 +167,7 @@ showTimeRangePicker({
         clockRotation: clockRotation,
         maxDuration: maxDuration,
         minDuration: minDuration,
+        fromToBoxDecoration: fromToBoxDecoration,
       ));
 
   return await showDialog<TimeRange>(
